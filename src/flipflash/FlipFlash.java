@@ -22,6 +22,7 @@ import javax.swing.border.Border;
 public class FlipFlash {
 
 	JFrame frame = new JFrame("Flip Flash");
+	JPanel framePanel = new JPanel();
 	JPanel frontPanel = new JPanel();
 	JLabel frontLabel = new JLabel("Welcome to Flip Flash \npress button to begin");
 	JButton flipButton = new JButton("Flip!");
@@ -31,6 +32,8 @@ public class FlipFlash {
 	Dimension buttonSize = new Dimension(50,50);
 	
 	Flash[] cards;
+	int currentcard = 0;
+	
 	FlipFlashListener ffListener;
 	FlipFlashHelper ffHelper;
 	
@@ -38,7 +41,6 @@ public class FlipFlash {
 	 * 
 	 */
 	public FlipFlash() {
-		// TODO Auto-generated constructor stub
 		ffHelper = new FlipFlashHelper(this);
 		ffListener = new FlipFlashListener(this, ffHelper);
 		init();
@@ -46,7 +48,8 @@ public class FlipFlash {
 
 	private void init() {
 		// TODO Auto-generated method stub
-		
+		flipButton.addMouseListener(ffListener);
+		ffHelper.loadCards();
 	}
 
 	/**
@@ -68,12 +71,12 @@ public class FlipFlash {
 		frame.setVisible(true);
 	}
 
-	private void addMenu(JFrame frame2) {
+	private void addMenu(JFrame frame) {
 		// TODO Auto-generated method stub
 		
 	}
 
-	private void addAndArrangePanels(JFrame frame2) {
+	private void addAndArrangePanels(JFrame frame) {
 		Border paddingBorder = BorderFactory.createEmptyBorder(5, 5, 5, 5);
 		Border lineBorder = BorderFactory.createBevelBorder(BevelBorder.LOWERED);
 		frontPanel.setBorder(lineBorder);
@@ -86,11 +89,15 @@ public class FlipFlash {
 		flipButton.setAlignmentX(Component.CENTER_ALIGNMENT);
 		backLabel.setBorder(paddingBorder);
 		backLabel.setAlignmentX(Component.CENTER_ALIGNMENT);
+		backLabel.setVisible(false);
 		frontPanel.add(frontLabel);
 		backPanel.add(backLabel);
-		frame.add(frontPanel);
-		frame.add(flipButton);
-		frame.add(backPanel);
+		framePanel.setBorder(paddingBorder);
+		framePanel.setLayout(new BoxLayout(framePanel, BoxLayout.Y_AXIS));
+		framePanel.add(frontPanel);
+		framePanel.add(flipButton);
+		framePanel.add(backPanel);
+		frame.add(framePanel);
 	}
 
 }

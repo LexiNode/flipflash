@@ -8,8 +8,12 @@ package flipflash;
  *
  */
 public class Flash {
-	String	front;
-	String	back;
+	private String	front;
+	private String	back;
+	
+	public Flash(){
+		
+	}
 	
 	public Flash(String front, String back) {
 		super();
