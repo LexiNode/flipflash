@@ -19,7 +19,18 @@ public class FlipFlashListener implements ActionListener, MouseListener{
 
 	@Override
 	public void actionPerformed(ActionEvent e) {
-		// TODO Auto-generated method stub
+		if (e.getActionCommand().equals("Exit")) {
+			System.exit(0);
+		}
+		if (e.getActionCommand().equals("Load Deck")) {
+			
+		}
+		if (e.getActionCommand().equals("Save Deck")) {
+			
+		}
+		if (e.getActionCommand().equals("Reset Deck")) {
+			
+		}
 	}
 	
 	@Override

@@ -5,12 +5,16 @@ package flipflash;
 
 import java.awt.Component;
 import java.awt.Dimension;
+import java.awt.event.ActionListener;
 
 import javax.swing.BorderFactory;
 import javax.swing.BoxLayout;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JMenu;
+import javax.swing.JMenuBar;
+import javax.swing.JMenuItem;
 import javax.swing.JPanel;
 import javax.swing.border.BevelBorder;
 import javax.swing.border.Border;
@@ -40,6 +44,7 @@ public class FlipFlash {
 	/**
 	 * 
 	 */
+	
 	public FlipFlash() {
 		ffHelper = new FlipFlashHelper(this);
 		ffListener = new FlipFlashListener(this, ffHelper);
@@ -72,7 +77,27 @@ public class FlipFlash {
 	}
 
 	private void addMenu(JFrame frame) {
-		// TODO Auto-generated method stub
+		JMenu file = new JMenu("File");
+		file.setMnemonic('F');
+		JMenuItem loadItem = new JMenuItem("Load Deck");
+		loadItem.setMnemonic('L');
+		loadItem.addActionListener(ffListener);
+		file.add(loadItem);
+		JMenuItem saveItem = new JMenuItem("Save Deck");
+		saveItem.setMnemonic('S');
+		saveItem.addActionListener(ffListener);
+		file.add(saveItem);
+		JMenuItem resetItem = new JMenuItem("Reset Deck");
+		resetItem.setMnemonic('R');
+		resetItem.addActionListener(ffListener);
+		file.add(resetItem);
+		JMenuItem exitItem = new JMenuItem("Exit");
+		exitItem.setMnemonic('x');
+		exitItem.addActionListener(ffListener);
+		file.add(exitItem);
+		JMenuBar menuBar = new JMenuBar();
+		menuBar.add(file);
+		frame.setJMenuBar(menuBar);
 		
 	}
 
