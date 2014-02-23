@@ -3,13 +3,12 @@
  */
 package flipflash;
 
+import java.awt.BorderLayout;
 import java.awt.Component;
 import java.awt.Dimension;
 import java.awt.Image;
 import java.util.ArrayList;
 import java.util.List;
-import java.awt.event.ActionListener;
-
 import javax.swing.BorderFactory;
 import javax.swing.BoxLayout;
 import javax.swing.ImageIcon;
@@ -127,17 +126,19 @@ public class FlipFlash {
 		Border lineBorder = BorderFactory.createBevelBorder(BevelBorder.LOWERED);
 		frontPanel.setBorder(lineBorder);
 		frontPanel.setPreferredSize(cardSize);
+		frontPanel.setLayout(new BorderLayout(5,5));
 		backPanel.setBorder(lineBorder);
 		backPanel.setPreferredSize(cardSize);
+		backPanel.setLayout(new BorderLayout(5,5));
 		frontLabel.setBorder(paddingBorder);
-		frontLabel.setAlignmentX(Component.CENTER_ALIGNMENT);
+		frontLabel.setHorizontalAlignment(JLabel.CENTER);
 		flipButton.setPreferredSize(buttonSize);
 		flipButton.setAlignmentX(Component.CENTER_ALIGNMENT);
 		backLabel.setBorder(paddingBorder);
-		backLabel.setAlignmentX(Component.CENTER_ALIGNMENT);
+		backLabel.setHorizontalAlignment(JLabel.CENTER);
 		backLabel.setVisible(false);
-		frontPanel.add(frontLabel);
-		backPanel.add(backLabel);
+		frontPanel.add(frontLabel, BorderLayout.CENTER);
+		backPanel.add(backLabel, BorderLayout.CENTER);
 		framePanel.setBorder(paddingBorder);
 		framePanel.setLayout(new BoxLayout(framePanel, BoxLayout.Y_AXIS));
 		framePanel.add(frontPanel);
